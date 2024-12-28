@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo docker stop $(sudo docker ps -q) || true && sudo docker rm -vf $(sudo docker ps -aq) || true && sudo docker rmi -f $(sudo docker images -q) || true && sudo docker volume prune -f || true && sudo docker network prune -f || true && sudo docker builder prune -a -f || true && sudo docker system prune -a --volumes -f || true
+rm -rf ~/ixios && rm -rf ~/.ixiosL1 && mkdir -p ~/ixios && cd ~/ixios && wget https://ixios.io/download/ixiosL1-ae-validator-toolkit-latest.tar.gz && tar -xvf ./ixiosL1-ae-validator-toolkit-latest.tar.gz && sudo ./install.sh && sleep 1 && sh -c "while true; do watch -n0.5 ./status.sh && sleep 1; done"
